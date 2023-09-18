@@ -13,10 +13,11 @@ RUN poetry config virtualenvs.create false \
   && poetry install --no-interaction --no-ansi
 
 # Copy only necessary files
-COPY ./app ./app
+COPY ./gradio ./app
 
 # Expose the necessary port
 EXPOSE 8080
+WORKDIR /app/gradio
 
 # Run the application
-CMD ["python", "app/datacraft.py"]
+CMD ["poetry","run","gradio", "./datacraft.py"]

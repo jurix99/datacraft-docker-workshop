@@ -4,39 +4,87 @@ This project provides a simple web application for outbreak forecasting. The app
 
 ## Table of Contents
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [File Descriptions](#file-descriptions)
-- [Contributing](#contributing)
-- [License](#license)
+- [DATACRAFT x EKIMETRICS Outbreak Forecasting App](#datacraft-x-ekimetrics-outbreak-forecasting-app)
+  - [Table of Contents](#table-of-contents)
+  - [Installation](#installation)
+  - [Usage](#usage)
+    - [Local development](#local-development)
+    - [Docker](#docker)
+    - [docker-compose](#docker-compose)
+  - [Files Descriptions](#files-descriptions)
+    - [`Dockerfile`](#dockerfile)
+    - [`docker-compose.yml`](#docker-composeyml)
+    - [`main.py`](#mainpy)
+  - [Contributing](#contributing)
+  - [License](#license)
 
 ## Installation
 
 1. Clone this repository:
-   ```
+
+   ``` sh
    git clone https://github.com/yourusername/datacraft-docker-workshop.git
    ```
-   
-2. Navigate to the project directory:
-   ```
-   cd datacraft-docker-workshop
-   ```
 
-3. Build the Docker image:
-   ```
-   docker-compose build
+2. Navigate to the project directory:
+
+   ``` sh
+   cd datacraft-docker-workshop
    ```
 
 ## Usage
 
-Run the Docker container:
+### Local development
+
+We recommend using [Poetry](https://python-poetry.org/) to manage local environment.
+
+Upon installation of Poetry, start the environment and install the dependencies :
+
+``` sh
+poetry shell
+poetry install
 ```
+
+To run the app locally :
+
+``` sh
+poetry run gradio ./app/datacraft.py
+```
+
+Your app should run on <http://localhost:8080/>.
+
+### Docker
+
+Building the app :
+
+``` sh
+docker build . -t datacraft
+```
+
+Running the app :
+
+``` sh
+docker run -dp 8080:8080 datacraft
+```
+Access the app on your browser using http://localhost:8080/.
+
+### docker-compose
+
+Build the Docker image:
+
+``` sh
+docker-compose build
+```
+
+Run the Docker container:
+
+``` sh
 docker-compose up
 ```
 
 After starting the container, the Gradio interface will be available at [http://localhost:8080](http://localhost:8080).
 
-## File Descriptions
+## Files Descriptions
 
 ### `Dockerfile`
 
@@ -53,7 +101,7 @@ After starting the container, the Gradio interface will be available at [http://
 - Python script that utilizes Gradio to create a web interface for the outbreak forecasting model
 - Defines the inputs and outputs for the Gradio interface
 
-```
+``` sh
 ├── Dockerfile
 ├── docker-compose.yml
 ├── app
