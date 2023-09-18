@@ -24,7 +24,7 @@ outputs = gr.Plot()
 # Create the Gradio Interface
 demo = gr.Interface(
     # Title of the web interface
-    title="DATACRAFT x EKIMETRICS",
+    title="DATACRAFT x EKIMETRICS x Gradio",
     # Description of the web interface
     description="Here's a sample outbreak forecasting app",
     # The function to be called when the interface is used
